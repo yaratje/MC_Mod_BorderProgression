@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package com.yara.borderprogression;
 
 import java.io.File;
 

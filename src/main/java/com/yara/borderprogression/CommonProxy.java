@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package com.yara.borderprogression;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -13,7 +13,7 @@ public class CommonProxy {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
 
         MyMod.LOG.info(Config.greeting);
-        MyMod.LOG.info("I am MyMod at version " + Tags.VERSION);
+        MyMod.LOG.info("I am MyMod at version 1.0");
     }
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
