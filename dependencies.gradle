@@ -36,6 +36,7 @@
 dependencies {
 
     compile files('libs/ServerUtilities-2.2.2.jar')
+    compile files('libs/BetterQuesting-3.7.15-GTNH.jar')
 
     //runtimeOnlyNonPublishable("com.github.GTNewHorizons:NotEnoughItems:2.7.69-GTNH:dev")
 }

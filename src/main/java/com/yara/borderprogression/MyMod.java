@@ -41,6 +41,8 @@ public class MyMod {
 
         BorderChunkUpdater borderChunkUpdater = new BorderChunkUpdater();
         MinecraftForge.EVENT_BUS.register(borderChunkUpdater);
+        MinecraftForge.EVENT_BUS.register(new ChunksUnlockedManager());
+        MinecraftForge.EVENT_BUS.register(new CancelUnclaim());
 
         // FMLCommonHandler.instance().bus().register(borderHandler);
         FMLCommonHandler.instance()

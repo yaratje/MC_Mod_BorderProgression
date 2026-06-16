@@ -13,16 +13,12 @@ import serverutils.lib.math.ChunkDimPos;
 
 public class BorderHandler {
 
-    // ===== DEBUG FLAGS =====
     private static final boolean DEBUG = true;
     private int tickCounter = 0;
 
-    // =======================
-    // CLIENT PARTICLE BORDER
-    // =======================
+    // particleborder
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {
-
         if (ClaimedChunks.instance == null) return;
 
         if (event.side != Side.CLIENT) return;
@@ -36,7 +32,7 @@ public class BorderHandler {
         int playerChunkX = ((int) player.posX) >> 4;
         int playerChunkZ = ((int) player.posZ) >> 4;
 
-        int renderRadius = 2; // how many chunks around player to check
+        int renderRadius = 2;
 
         for (int dx = -renderRadius; dx <= renderRadius; dx++) {
             for (int dz = -renderRadius; dz <= renderRadius; dz++) {
@@ -63,7 +59,7 @@ public class BorderHandler {
         ChunkDimPos neighborPos = new ChunkDimPos(cx + dx, cz + dz, world.provider.dimensionId);
         ClaimedChunk neighbor = ClaimedChunks.instance.getChunk(neighborPos);
 
-        // If neighbor is NOT claimed → draw border
+        // If neighbor chunk is not claimed show the border
         if (neighbor != null) return;
 
         int xStart = cx * 16;
@@ -90,9 +86,7 @@ public class BorderHandler {
         }
     }
 
-    // =======================
-    // PARTICLE SPAWNER
-    // =======================
+    // spawn particles but not too many
     private void spawnBorderParticle(World world, int x, double y, int z) {
 
         EntityPlayer player = Minecraft.getMinecraft().thePlayer;
@@ -103,10 +97,10 @@ public class BorderHandler {
 
         double distSq = dx * dx + dy * dy + dz * dz;
 
-        // debug: show why particles might not spawn
+        // show why particles are being stupid
         if (DEBUG && distSq > 5000) return;
 
-        // ALWAYS visible test particle
+        // test particles
         world.spawnParticle("reddust", x + 0.5, y, z + 0.5, 0.0, 0.1, 0.0);
     }
 }
