@@ -36,13 +36,13 @@ public class MyMod {
     public void init(FMLInitializationEvent event) {
         proxy.init(event);
 
-        // BorderHandler borderHandler = new BorderHandler();
-        // MinecraftForge.EVENT_BUS.register(borderHandler);
-
         BorderChunkUpdater borderChunkUpdater = new BorderChunkUpdater();
         MinecraftForge.EVENT_BUS.register(borderChunkUpdater);
         MinecraftForge.EVENT_BUS.register(new ChunksUnlockedManager());
         MinecraftForge.EVENT_BUS.register(new CancelUnclaim());
+        FMLCommonHandler.instance()
+            .bus()
+            .register(new ServerTickHandler());
 
         // FMLCommonHandler.instance().bus().register(borderHandler);
         FMLCommonHandler.instance()

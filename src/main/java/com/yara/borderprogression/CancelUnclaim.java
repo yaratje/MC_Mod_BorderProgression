@@ -5,7 +5,6 @@ import net.minecraft.util.ChatComponentText;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import serverutils.data.ClaimedChunk;
-import serverutils.data.ClaimedChunks;
 import serverutils.events.chunks.ChunkModifiedEvent;
 import serverutils.lib.data.ForgePlayer;
 import serverutils.lib.math.ChunkDimPos;
@@ -14,6 +13,7 @@ public class CancelUnclaim {
 
     @SubscribeEvent
     public void onChunkUnclaim(ChunkModifiedEvent.Unclaimed event) {
+        System.out.println("UNCLAIM EVENT FIRED");
 
         ForgePlayer fp = event.getPlayer();
 
@@ -29,7 +29,7 @@ public class CancelUnclaim {
 
         ChunkDimPos posToReclaim = chunk.getPos();
 
-        ClaimedChunks.instance.claimChunk(fp, posToReclaim);
+        ServerTickHandler.pending.add(new ServerTickHandler.ReclaimTask(fp, posToReclaim, 4));
 
         player.addChatMessage(new ChatComponentText("You cant unclaim chunks. :) "));
 
