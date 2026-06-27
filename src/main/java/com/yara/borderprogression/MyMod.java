@@ -16,6 +16,9 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 @Mod(modid = MyMod.MODID, version = "1.0", name = "BorderProgression", acceptedMinecraftVersions = "[1.7.10]")
 public class MyMod {
 
+
+    public static Item questCoin;
+
     public static final String MODID = "borderprogression";
     public static final Logger LOG = LogManager.getLogger(MODID);
 
@@ -35,6 +38,16 @@ public class MyMod {
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
     public void init(FMLInitializationEvent event) {
         proxy.init(event);
+
+
+        questCoin = new Item()
+            .setUnlocalizedName("quest_coin")
+            .setTextureName("borderprogression:quest_coin")
+            .setMaxStackSize(64);
+
+        GameRegistry.registerItem(questCoin, "quest_coin");
+
+
 
         BorderChunkUpdater borderChunkUpdater = new BorderChunkUpdater();
         MinecraftForge.EVENT_BUS.register(borderChunkUpdater);
