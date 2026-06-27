@@ -40,6 +40,7 @@ public class MyMod {
         MinecraftForge.EVENT_BUS.register(borderChunkUpdater);
         MinecraftForge.EVENT_BUS.register(new ChunksUnlockedManager());
         MinecraftForge.EVENT_BUS.register(new CancelUnclaim());
+        MinecraftForge.EVENT_BUS.register(new BorderOutsideProtection());
         FMLCommonHandler.instance()
             .bus()
             .register(new ServerTickHandler());
